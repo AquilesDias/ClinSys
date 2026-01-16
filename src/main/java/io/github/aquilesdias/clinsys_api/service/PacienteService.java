@@ -36,6 +36,7 @@ public class PacienteService {
         existsPaciente.setDtNascimento(paciente.getDtNascimento());
         existsPaciente.setTelefone(paciente.getTelefone());
         existsPaciente.setEndereco(paciente.getEndereco());
+        existsPaciente.setEmail(paciente.getEmail());
 
         return repository.save(existsPaciente);
     }

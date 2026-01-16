@@ -7,5 +7,6 @@ public record PacienteResponseDTO(
         String cpf,
         LocalDate dtNascimento,
         String telefone,
-        String endereco ) {
+        String endereco,
+        String email) {
 }

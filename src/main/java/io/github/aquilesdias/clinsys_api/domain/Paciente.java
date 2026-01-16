@@ -21,16 +21,18 @@ public class Paciente {
     @GeneratedValue
     private Long id;
     private String nome;
+    private String email;
     private String cpf;
     private LocalDate dtNascimento;
     private String telefone;
     private String endereco;
 
-    public Paciente(String nome, String cpf, LocalDate dtNascimento, String telefone, String endereco) {
+    public Paciente(String nome, String cpf, LocalDate dtNascimento, String telefone, String endereco, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.dtNascimento = dtNascimento;
         this.telefone = telefone;
         this.endereco = endereco;
+        this.email = email;
     }
 }

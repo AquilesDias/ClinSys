@@ -14,7 +14,8 @@ public class PacienteMapper {
                 dto.cpf(),
                 dto.dtNascimento(),
                 dto.telefone(),
-                dto.endereco()
+                dto.endereco(),
+                dto.email()
         );
 
     }
@@ -26,7 +27,8 @@ public class PacienteMapper {
                 paciente.getCpf(),
                 paciente.getDtNascimento(),
                 paciente.getTelefone(),
-                paciente.getEndereco()
+                paciente.getEndereco(),
+                paciente.getEmail()
         );
     }
 
