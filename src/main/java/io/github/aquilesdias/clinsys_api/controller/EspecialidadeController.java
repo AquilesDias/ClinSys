@@ -4,6 +4,7 @@ import io.github.aquilesdias.clinsys_api.controller.dto.EspecialidadeDTO;
 import io.github.aquilesdias.clinsys_api.domain.Especialidade;
 import io.github.aquilesdias.clinsys_api.mapper.EspecialidadeMapper;
 import io.github.aquilesdias.clinsys_api.service.EspecialidadeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class EspecialidadeController {
     private final EspecialidadeMapper especialidadeMapper;
 
     @PostMapping
-    public ResponseEntity<EspecialidadeDTO> salvarEspecialidade(@RequestBody EspecialidadeDTO dto){
+    public ResponseEntity<EspecialidadeDTO> salvarEspecialidade(@Valid @RequestBody EspecialidadeDTO dto){
 
         Especialidade especialidade = service.save(especialidadeMapper.toEntity(dto));
         return ResponseEntity.ok(especialidadeMapper.toDto(especialidade));

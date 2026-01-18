@@ -1,6 +1,7 @@
 package io.github.aquilesdias.clinsys_api.mapper;
 
 import io.github.aquilesdias.clinsys_api.controller.dto.MedicoResponseDTO;
+import io.github.aquilesdias.clinsys_api.controller.exceptions.EspecialidadeNaoEncontradaException;
 import io.github.aquilesdias.clinsys_api.domain.Especialidade;
 import io.github.aquilesdias.clinsys_api.domain.Medico;
 import io.github.aquilesdias.clinsys_api.repositories.EspecialidadeRepository;
@@ -17,7 +18,7 @@ public class MedicoMapper {
 
         Especialidade especialidade = especialidadeRepository
                 .findByNome(dto.especialidade())
-                .orElseThrow(() -> new RuntimeException("Especialidade não encontrada"));
+                .orElseThrow(() -> new EspecialidadeNaoEncontradaException("Especialidade não encontrada"));
 
         return new Medico(
                 dto.nome(),

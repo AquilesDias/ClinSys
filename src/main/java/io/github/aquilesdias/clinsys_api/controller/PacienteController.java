@@ -4,6 +4,7 @@ import io.github.aquilesdias.clinsys_api.controller.dto.PacienteResponseDTO;
 import io.github.aquilesdias.clinsys_api.domain.Paciente;
 import io.github.aquilesdias.clinsys_api.mapper.PacienteMapper;
 import io.github.aquilesdias.clinsys_api.service.PacienteService;
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class PacienteController {
     private final PacienteMapper mapper;
 
     @PostMapping
-    public ResponseEntity<PacienteResponseDTO> paciente(@RequestBody PacienteResponseDTO dto ){
+    public ResponseEntity<PacienteResponseDTO> paciente(@RequestBody @Valid PacienteResponseDTO dto ){
 
         Paciente paciente = mapper.toEntity(dto);
         Paciente salvar = service.save(paciente);

@@ -1,9 +1,11 @@
 package io.github.aquilesdias.clinsys_api.controller;
 
 import io.github.aquilesdias.clinsys_api.controller.dto.MedicoResponseDTO;
+import io.github.aquilesdias.clinsys_api.controller.exceptions.EspecialidadeNaoEncontradaException;
 import io.github.aquilesdias.clinsys_api.domain.Medico;
 import io.github.aquilesdias.clinsys_api.mapper.MedicoMapper;
 import io.github.aquilesdias.clinsys_api.service.MedicoService;
+import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
@@ -19,7 +21,7 @@ public class MedicoController {
     private final MedicoMapper medicoMapper;
 
     @PostMapping
-    public ResponseEntity<MedicoResponseDTO> salvar(@RequestBody MedicoResponseDTO dto){
+    public ResponseEntity<MedicoResponseDTO> salvar(@Valid @RequestBody MedicoResponseDTO dto) {
 
         Medico medico = medicoMapper.toEntity(dto);
         Medico novoMedico = service.save(medico);
