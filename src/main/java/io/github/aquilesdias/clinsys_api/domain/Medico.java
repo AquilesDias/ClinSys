@@ -1,9 +1,6 @@
 package io.github.aquilesdias.clinsys_api.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,10 +17,15 @@ public class Medico {
     private Long id;
     private String nome;
     private String crm;
-    private String especialidade;
+
+    @OneToOne
+    @JoinColumn(name = "especialidade_id")
+    private Especialidade especialidade;
+
+
     private String email;
 
-    public Medico(String nome, String crm, String especialidade, String email) {
+    public Medico(String nome, String crm, Especialidade especialidade, String email) {
         this.nome = nome;
         this.crm = crm;
         this.especialidade = especialidade;

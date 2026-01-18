@@ -29,8 +29,9 @@ public class MedicoController {
     }
 
     @GetMapping(params = "id")
-    public Medico encontrarMedicoPorId(@PathParam("id") Long id){
-        return service.findById(id).orElseThrow(() -> new RuntimeException("Medico não encontrado"));
+    public MedicoResponseDTO encontrarMedicoPorId(@PathParam("id") Long id){
+        Medico medico = service.findById(id).orElseThrow(() -> new RuntimeException("Medico não encontrado"));
+        return medicoMapper.toDto(medico);
     }
 
     @PutMapping("{id}")
