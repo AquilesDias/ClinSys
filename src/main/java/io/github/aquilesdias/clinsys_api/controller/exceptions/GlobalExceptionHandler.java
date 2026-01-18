@@ -34,6 +34,17 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
     }
 
+    @ExceptionHandler(MedicoComEspecialidadeDuplicada.class)
+    public ResponseEntity<Map<String, String>> handleEspecialidadeJaCadastrada(
+            MedicoComEspecialidadeDuplicada ex) {
+
+        Map<String, String> erro = new HashMap<>();
+        erro.put("erro", ex.getMessage());
+
+        return ResponseEntity.badRequest().body(erro);
+    }
+
+
 
 
     @ExceptionHandler(Exception.class)

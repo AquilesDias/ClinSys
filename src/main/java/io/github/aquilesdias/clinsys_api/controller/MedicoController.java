@@ -1,17 +1,16 @@
 package io.github.aquilesdias.clinsys_api.controller;
 
 import io.github.aquilesdias.clinsys_api.controller.dto.MedicoResponseDTO;
-import io.github.aquilesdias.clinsys_api.controller.exceptions.EspecialidadeNaoEncontradaException;
 import io.github.aquilesdias.clinsys_api.domain.Medico;
 import io.github.aquilesdias.clinsys_api.mapper.MedicoMapper;
 import io.github.aquilesdias.clinsys_api.service.MedicoService;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin("*")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/medicos")

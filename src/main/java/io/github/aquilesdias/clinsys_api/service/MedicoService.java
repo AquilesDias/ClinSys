@@ -1,9 +1,9 @@
 package io.github.aquilesdias.clinsys_api.service;
 
+import io.github.aquilesdias.clinsys_api.controller.exceptions.MedicoComEspecialidadeDuplicada;
 import io.github.aquilesdias.clinsys_api.domain.Medico;
 import io.github.aquilesdias.clinsys_api.repositories.MedicoRepository;
 import lombok.RequiredArgsConstructor;
-import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +16,15 @@ public class MedicoService {
 
 
     public Medico save(Medico medico) {
+
+        boolean exist = repository.existsByEspecialidadeId(medico.getEspecialidade().getId());
+
+        if (exist) {
+            throw new MedicoComEspecialidadeDuplicada(
+                    "Especialidade já está cadastrada para outro médico"
+            );
+        }
+
         return repository.save(medico);
     }
 
